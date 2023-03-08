@@ -1,6 +1,6 @@
 ---
  
-- hosts: all
+- hosts: all 
   become: true
   tasks:
 
@@ -12,4 +12,8 @@
     yum:
       name: httpd
       state: latest
+
+  - name: install php package
+    yum:
+      name: php
 

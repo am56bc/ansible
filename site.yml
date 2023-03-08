@@ -1,0 +1,25 @@
+---
+ 
+- hosts: all 
+  become: true
+  tasks:
+
+  - name: install updates 
+    yum:
+     update_only: yes
+     update_cache: yes
+    when: ansible_distribution == "Centos"
+    tags: boot, fang, shrimp
+
+- hosts: web_servers
+  become: true
+  tasks:
+
+  - name: :install apache and php
+    yum:
+      name:
+        - httpd
+        - php
+      state: latest
+    when: ansible_distribution == "Centos"
+    tags: chicken
